@@ -1,27 +1,25 @@
 import './App.css';
-import Login from './components/Login/Login';
-import { createBrowserRouter } from 'react-router-dom';
-import Home from './components/Home/Home';
-import { Navbar } from './components/Navbar/Navbar';
+import { Routes, Route } from 'react-router-dom';
+import HOME from './components/Home';
+import About from './components/About';
+import Navbar from './components/Navbar';
+import UserList from './components/UserList';
+import SingleUser from './components/SingleUser';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />
-    },
-    {
-      path: "/login",
-      element: <Login />
-    }
-
-  ]);
 
   return (
     <>
       <Navbar />
+      <Routes>
+        <Route path='/' element={<HOME />} />
+        <Route path='/UserList' element={< UserList />} />
+        <Route path='/UserList/:id' element={<SingleUser />} />
+        {/* Here you can add your more routes */}
+        <Route path='/about' element={<About />} />
+      </Routes>
     </>
   )
 }
 
-export default App
+export default App;
